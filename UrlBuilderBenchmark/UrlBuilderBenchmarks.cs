@@ -1,57 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
 
-namespace UrlBuilderBenchmark {
-    
-    [MemoryDiagnoser]
-    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    [RankColumn]
-    public class UrlBuilderBenchmarks
+namespace UrlBuilderBenchmark;
+
+[MemoryDiagnoser]
+[Orderer(SummaryOrderPolicy.FastestToSlowest)]
+[RankColumn]
+public class UrlBuilderBenchmarks
+{
+    private const string BrandUrl = "foo";
+    private const string ProductUrl = "bar";
+
+    [Benchmark]
+    public void CreateUrlOriginal()
     {
-        private const string _brandUrl = "foo";
-        private const string _productUrl = "bar";
+        UrlBuilder.CreateUrlOriginal(BrandUrl, ProductUrl);
+    }
 
-        private static readonly UrlBuilder UrlBuilder = new();
+    [Benchmark]
+    public void CreateUrlOriginalWithoutNullCheck()
+    {
+        UrlBuilder.CreateUrlOriginalWithoutNullCheck(BrandUrl, ProductUrl);
+    }
 
-        [Benchmark]
-        public void CreateUrlOriginal()
-        {
-            UrlBuilder.CreateUrlOriginal(_brandUrl, _productUrl);
-        }
+    [Benchmark]
+    public void CreateUrlWithConcat()
+    {
+        UrlBuilder.CreateUrlWithConcat(BrandUrl, ProductUrl);
+    }
 
-        [Benchmark]
-        public void CreateUrlOriginalWithoutNullCheck()
-        {
-            UrlBuilder.CreateUrlOriginalWithoutNullCheck(_brandUrl, _productUrl);
-        }
+    [Benchmark]
+    public void CreateUrlWithRegEx()
+    {
+        UrlBuilder.CreateUrlWithRegEx(BrandUrl, ProductUrl);
+    }
 
-        [Benchmark]
-        public void CreateUrlWithConcat()
-        {
-            UrlBuilder.CreateUrlWithConcat(_brandUrl, _productUrl);
-        }
+    [Benchmark]
+    public void CreateUrlWithInterpolation()
+    {
+        UrlBuilder.CreateUrlWithInterpolation(BrandUrl, ProductUrl);
+    }
 
-        [Benchmark]
-        public void CreateUrlWithRegEx()
-        {
-            UrlBuilder.CreateUrlWithRegEx(_brandUrl, _productUrl);
-        }
-
-        [Benchmark]
-        public void CreateUrlWithInterpolation()
-        {
-            UrlBuilder.CreateUrlWithInterpolation(_brandUrl, _productUrl);
-        }
-
-        [Benchmark]
-        public void CreateUrlWithJoin()
-        {
-            UrlBuilder.CreateUrlWithJoin(_brandUrl, _productUrl);
-        }
+    [Benchmark]
+    public void CreateUrlWithJoin()
+    {
+        UrlBuilder.CreateUrlWithJoin(BrandUrl, ProductUrl);
     }
 }
