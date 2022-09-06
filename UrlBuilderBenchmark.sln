@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlBuilder_UnitTests", "Url
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{29457DF8-7542-423B-9DA2-7EA087D34446}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{773D9857-117E-4546-B019-BB7E1FC86CC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{4A09D725-7D1D-457C-9C71-582D0E089F0E} = {773D9857-117E-4546-B019-BB7E1FC86CC6}
 		{DBA302F1-7CAE-43B6-B00C-5015EC4C6E49} = {29457DF8-7542-423B-9DA2-7EA087D34446}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
